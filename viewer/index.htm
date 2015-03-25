@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>FlightViewer</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+		<style type="text/css">
+${demo.css}
+		</style>
+		<script type="text/javascript">
+$(function () {
+    var data = [];
+    var ref = new Firebase("https://piste01.firebaseio.com/detect");
+//orderByChild("height")
+
+    ref.on("child_added", function(snapshot) {
+          dt = snapshot.val();
+          tb = [dt.timestamp,dt.altitude,dt.callsign,dt.departure,dt.destination];
+          data.push(tb);
+          //data.push("1");
+                  // Create the chart
+        $('#container').highcharts('StockChart', {
+
+            
+            rangeSelector : {
+                selected : 1
+            },
+
+            title : {
+                text : "Planes' Altitude @ UTC "
+            },
+           yAxis : {
+                title : {
+                    text : 'Altitude Feet'
+                },
+                min: 0,
+                max: 40000,
+                plotLines : [{
+                    value : 5000,
+                    color : 'red',
+                    dashStyle : 'shortdash',
+                    width : 1,
+                    label : {
+                        text : '5000 Feet limit'
+                    }
+                }]
+            },
+            series : [{
+                name : 'Plane',
+                data : data,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }],
+            rangeSelector : {
+                buttons : [{
+                    type : 'hour',
+                    count : 6,
+                    text : '6h'
+                },{
+                    type : 'hour',
+                    count : 12,
+                    text : '12h'
+                }, {
+                    type : 'day',
+                    count : 1,
+                    text : '1D'
+                }, {
+                    type : 'day',
+                    count : 7,
+                    text : '7D'
+                }, {
+                    type : 'all',
+                    count : 1,
+                    text : 'All'
+                }],
+                selected : 3,
+                inputEnabled : true
+            }
+        });
+
+          
+    }, function (errorObject) {
+       console.log("The read failed: " + errorObject.code);
+    }); 
+
+    
+
+});
+
+		</script>
+	</head>
+	<body>
+<script src="./js/highstock.js"></script>
+<script src="./js/modules/exporting.js"></script>
+<h2>Fligth Tracker</h1>
+<div id="container" style="height: 500px; min-width: 310px">
+
+</div>
+	</body>
+</html>

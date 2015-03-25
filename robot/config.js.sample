@@ -1,0 +1,14 @@
+exports.db = {
+     url: 'https://YOURDB.firebaseio.com/'
+    ,token: 'YOURBEAUTIFULFIREBASETOKEN'
+  };
+
+exports.poller={
+     name:'MYROBOTNAME'
+    ,coords:{latitude: 50.70,longitude: 4.41}  //your home coords
+    ,distance:2000    // diameter to survey around you home (meters)
+    ,interval:10000   // Check the site every xxxx Millisec
+  };
+
+exports.filter={}    //Not yet used
+
