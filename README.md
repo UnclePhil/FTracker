@@ -1,10 +1,12 @@
 # FligthTracker
 
 **WARNING**
-Plane finder have closed his "open api" and now this code is obsolete. but the idea is still there.
 
-you can have access to the api if you pay.... or you can adapt this with the fligthradar24 api
+Plane finder have closed his "open api" and now this code is obsolete. But the idea is still there.
 
+You can have access to the api if you pay.... or you can adapt this with the fligthradar24 api
+
+Have some look to node-red and node-red-contrib-flightradar24, this is the most simple way to have some mumbers
 
 
 
