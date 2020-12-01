@@ -1,5 +1,13 @@
 # FligthTracker
 
+**WARNING**
+Plane finder have closed his "open api" and now this code is obsolete. but the idea is still there.
+
+you can have access to the api if you pay.... or you can adapt this with the fligthradar24 api
+
+
+
+
 ## Purpose
 The goal of this double software is to track the planes coming over my house to land in the BRU airport through the planefinder.net website.
 Then i'll try to combine this with the noise value detected by my personnal sonometer.
